@@ -19,6 +19,7 @@ public class BookService {
 	private final BookRepository bookRepository;
 
 	/**
+	 * This method helps in adding a new book. ISBN number is the unique key.
 	 * @param bookData - contains book related details like ISBN no, price, stock quantity and name
 	 * @return object saved for the Book
 	 */

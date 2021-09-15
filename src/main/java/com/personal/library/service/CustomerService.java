@@ -15,10 +15,10 @@ public class CustomerService {
 	private final CustomerRepository customerRepository;
 
 	/**
-	 * This method save customer object if the email ID is not already registered
+	 * This method save customer object if the email ID is not already registered.
 	 * @param customer request
 	 * @return created object of Customer
-	 * @throws Exception If customer email ID is already registerd
+	 * @throws Exception If customer email ID is already registered
 	 */
 	public Customer add(Customer customer) throws Exception {
 		Optional<Customer> existingCustomer = customerRepository.findCustomerByEmailIdIgnoreCase(customer.getEmailId());
