@@ -32,7 +32,7 @@ public class OrderController {
 
 	@PostMapping(path = "/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public GenericResponse createOrder(@RequestBody @Valid PlaceOrderRequest request) {
-		GenericResponse response = new GenericResponse();
+		GenericResponse<Order> response = new GenericResponse();
 		try {
 			response.setData(orderService.add(request));
 			response.setStatus(Constants.RESPONSE_STATUS_OK);

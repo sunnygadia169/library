@@ -19,6 +19,10 @@ import lombok.RequiredArgsConstructor;
 public class StatisticsService {
 	private final OrderRepository orderRepository;
 
+	/**
+	 * @param request - contains customer's email ID
+	 * @return - List of objects containing customer's data like total orders, books ordered, and total amount grouped by months
+	 */
 	public List<CustomerOrderSummaryResponse> getCustomerOrderMonthlySummary(
 			FetchCustomerMonthlySummaryRequest request) {
 		List<CustomerOrderSummaryResponse> result = new ArrayList();

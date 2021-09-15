@@ -28,6 +28,14 @@ public class OrderService {
 	private final CustomerRepository customerRepository;
 	private final OrderRepository orderRepository;
 
+	/**
+	 * This method checks if the customer id is already registered.
+	 * If yes, then it checks for requested book availability.
+	 * If all checks are satisfied, updated the book stock and computes the price and saves into order details.
+	 * @param orderReq - Request with details like customer email ID, book ISBN no, book quantity
+	 * @return Created object of Order type 
+	 * @throws Exception
+	 */
 	public Order add(PlaceOrderRequest orderReq) throws Exception {
 
 		Optional<Book> book = null;
@@ -58,6 +66,11 @@ public class OrderService {
 		return result;
 	}
 
+	/**
+	 * Fetch orders for a customer email ID. ALso, supports pagination
+	 * @param request with details like customer email ID, pageable, page no and page size
+	 * @return List of Orders
+	 */
 	public List<Order> fetchCustomerOrders(@Valid FetchCustomerOrderRequest request) {
 		List<Order> orderList = null;
 
@@ -72,11 +85,22 @@ public class OrderService {
 		return orderList;
 	}
 
+	/**
+	 * Fetches the order details for an order ID
+	 * @param id - Order ID
+	 * @return - Order object if present else null
+	 */
 	public Order findOrderById(String id) {
 		Optional<Order> order = orderRepository.findById(id);
 		return order.isPresent() ? order.get() : null;
 	}
 
+	/**
+	 * Fetches all the orders for a given date range
+	 * @param startDate - date in "yyyy-mm-dd" format
+	 * @param endDate - date in "yyyy-mm-dd" format
+	 * @return List of orders in the given date range
+	 */
 	public List<Order> findAllByDate(LocalDate startDate, LocalDate endDate) {
 		List<Order> orderList = orderRepository.findByOrderDateBetween(startDate, endDate);
 		return orderList;

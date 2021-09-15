@@ -18,18 +18,29 @@ import lombok.RequiredArgsConstructor;
 public class BookService {
 	private final BookRepository bookRepository;
 
+	/**
+	 * @param bookData - contains book related details like ISBN no, price, stock quantity and name
+	 * @return object saved for the Book
+	 */
 	public Book add(Book bookData) {
 		Book result = bookRepository.save(bookData);
 		return result;
 	}
 
-	public String updateStock(UpdateBookStockRequest request) throws Exception {
+	/**
+	 * This method helps in adding stock of an existing book
+	 * @param request - contains data like book ISBN no and the stock quantity that needs to be added to the existing stock
+	 * @return - The updated Book object
+	 * @throws Exception
+	 */
+	public String addStock(UpdateBookStockRequest request) throws Exception {
 		String status = Constants.FAIL;
 
 		Optional<Book> book = bookRepository.findBookByIsbnNo(request.getIsbnNo());
 		if (book.isPresent()) {
-			book.get().setStockQty(request.getStockQty());
-			bookRepository.save(book.get());
+			Book currBook = book.get();
+			currBook.setStockQty(request.getStockQty() + currBook.getStockQty());
+			bookRepository.save(currBook);
 			status = Constants.SUCCESS;
 		} else {
 			throw new Exception(

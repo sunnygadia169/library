@@ -50,7 +50,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/book/updateStock",
+					"raw": "http://localhost:8080/api/book/addStock",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -59,7 +59,7 @@
 					"path": [
 						"api",
 						"book",
-						"updateStock"
+						"addStock"
 					]
 				}
 			},

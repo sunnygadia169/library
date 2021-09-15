@@ -37,11 +37,11 @@ public class BookController {
 		return response;
 	}
 
-	@PostMapping(path = "/updateStock", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public GenericResponse updateStock(@RequestBody @Valid UpdateBookStockRequest request) {
+	@PostMapping(path = "/addStock", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public GenericResponse addStock(@RequestBody @Valid UpdateBookStockRequest request) {
 		GenericResponse<String> response = new GenericResponse();
 		try {
-			response.setData(bookService.updateStock(request));
+			response.setData(bookService.addStock(request));
 			response.setStatus(Constants.RESPONSE_STATUS_OK);
 			response.setMessage(Constants.RESPONSE_MESSAGE_SUCCESS);
 		} catch (Exception e) {
