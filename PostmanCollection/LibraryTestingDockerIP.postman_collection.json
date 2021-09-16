@@ -1,0 +1,274 @@
+{
+	"info": {
+		"_postman_id": "1571eafb-c482-4286-aedc-5ccbe981270c",
+		"name": "LibraryTestingDockerIP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Sunny\",\r\n    \"lastName\": \"Gadia\",\r\n    \"emailId\": \"sunny@test.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.99.100:8080/api/customer/create",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"99",
+						"100"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customer",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Jason Bourne\",\r\n    \"stockQty\": 35 ,\r\n    \"isbnNo\": 1111,\r\n    \"price\": 649\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.99.100:8080/api/book/create",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"99",
+						"100"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"book",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Book Stock",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"isbnNo\": 1111,\r\n    \"stockQty\": 25\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.99.100:8080/api/book/addStock",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"99",
+						"100"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"book",
+						"addStock"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerEmailId\": \"sunny@test.com\",\r\n    \"bookQty\": 26,\r\n    \"bookIsbnNo\": 1111\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.99.100:8080/api/order/create",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"99",
+						"100"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"order",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Customer Orders without pagination",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \r\n    \"customerEmailId\": \"sunny@test.com\",\r\n    \"pageAble\": false\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.99.100:8080/api/customer/fetchOrders",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"99",
+						"100"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customer",
+						"fetchOrders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Orders for a date range",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.99.100:8080/api/order/forInterval?startDate=2021-09-01&endDate=2021-09-30",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"99",
+						"100"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"order",
+						"forInterval"
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": "2021-09-01"
+						},
+						{
+							"key": "endDate",
+							"value": "2021-09-30"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Customer Monthly Order Summary",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \r\n    \"customerEmailId\": \"sunny@test.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.99.100:8080/api/statistics/fetchCustomerMonthlyStats",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"99",
+						"100"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"statistics",
+						"fetchCustomerMonthlyStats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Customer Orders with Paging",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \r\n    \"customerEmailId\": \"sunny@test.com\",\r\n    \"pageAble\": true,\r\n    \"pageNo\": 0,\r\n    \"pageSize\": 2\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.99.100:8080/api/customer/fetchOrders",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"99",
+						"100"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customer",
+						"fetchOrders"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

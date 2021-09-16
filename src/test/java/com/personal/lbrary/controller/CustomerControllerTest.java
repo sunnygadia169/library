@@ -46,7 +46,7 @@ class CustomerControllerTest {
 	void testCreateCustomer() {
 		Customer newCustomer = new Customer("Sunny", "Gadia", "test@gmai.com");
 		ResponseEntity<GenericResponse> postResponse = restTemplate
-				.postForEntity("http://localhost:8085/api/customer/create", newCustomer, GenericResponse.class);
+				.postForEntity("http://localhost:8080/api/customer/create", newCustomer, GenericResponse.class);
 		assertNotNull(postResponse);
 		assertEquals(Constants.RESPONSE_STATUS_OK, postResponse.getBody().getStatus());
 		LinkedHashMap map = (LinkedHashMap) postResponse.getBody().getData();
@@ -59,7 +59,7 @@ class CustomerControllerTest {
 		request.setCustomerEmailId("test@gmai.com");
 		request.setPageAble(false);
 		ResponseEntity<GenericResponse> postResponse = restTemplate
-				.postForEntity("http://localhost:8085/api/customer/fetchOrders", request, GenericResponse.class);
+				.postForEntity("http://localhost:8080/api/customer/fetchOrders", request, GenericResponse.class);
 		assertNotNull(postResponse);
 		assertEquals(Constants.RESPONSE_STATUS_OK, postResponse.getBody().getStatus());
 		assertEquals(0, ((List) postResponse.getBody().getData()).size());
