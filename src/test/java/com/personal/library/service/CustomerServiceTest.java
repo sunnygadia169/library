@@ -3,18 +3,16 @@ package com.personal.library.service;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.util.ReflectionTestUtils;
+import org.springframework.test.context.TestPropertySource;
 
 import com.personal.library.LibraryApplication;
 import com.personal.library.data.model.Customer;
 import com.personal.library.repository.CustomerRepository;
 
 @SpringBootTest(classes = LibraryApplication.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+@TestPropertySource(locations="classpath:application-test.properties")
 public class CustomerServiceTest {
 
 	private CustomerService customerService;
