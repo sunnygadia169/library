@@ -2,6 +2,7 @@
 
 ## Description ## 
 Library is a solution for online book selling system where customers can be onboarded, books can be added, orders can be placed.
+This is my first attempt at working with Mongo DB and containerizing application with Docker.
 
 ## Tech Stack ##
 * Java 11
