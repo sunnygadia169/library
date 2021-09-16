@@ -19,18 +19,26 @@ public class BookService {
 	private final BookRepository bookRepository;
 
 	/**
-	 * This method helps in adding a new book. ISBN number is the unique key.
-	 * @param bookData - contains book related details like ISBN no, price, stock quantity and name
+	 * This method helps in adding a new book if ISBN number is not already registered.
+	 * 
+	 * @param bookData - contains book related details like ISBN no, price, stock
+	 *                 quantity and name
 	 * @return object saved for the Book
 	 */
-	public Book add(Book bookData) {
-		Book result = bookRepository.save(bookData);
-		return result;
+	public Book add(Book bookData) throws Exception {
+		Optional<Book> book = bookRepository.findBookByIsbnNo(bookData.getIsbnNo());
+		if (book.isPresent()) {
+			throw new Exception("Book ISBN Number already registered");
+		}
+		
+		return bookRepository.save(bookData);
 	}
 
 	/**
-	 * This method helps in adding stock of an existing book
-	 * @param request - contains data like book ISBN no and the stock quantity that needs to be added to the existing stock
+	 * This method helps in adding stock of an existing book and returns status
+	 * 
+	 * @param request - contains data like book ISBN no and the stock quantity that
+	 *                needs to be added to the existing stock
 	 * @return - The updated Book object
 	 * @throws Exception
 	 */

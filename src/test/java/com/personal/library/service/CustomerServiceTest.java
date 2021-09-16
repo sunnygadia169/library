@@ -14,7 +14,6 @@ import com.personal.library.LibraryApplication;
 import com.personal.library.data.model.Customer;
 import com.personal.library.repository.CustomerRepository;
 
-//@ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = LibraryApplication.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class CustomerServiceTest {
 
@@ -25,7 +24,6 @@ public class CustomerServiceTest {
 
 	@BeforeEach
 	void initBefore() {
-//		ReflectionTestUtils.setField(customerService, "customerRepository", customerRepository);
 		customerService = new CustomerService(customerRepository);
 	}
 

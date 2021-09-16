@@ -1,3 +1,5 @@
+package com.personal.lbrary.controller;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -23,7 +25,6 @@ import com.personal.library.service.CustomerService;
 import com.personal.library.util.Constants;
 import com.personal.library.util.GenericResponse;
 
-//@ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = LibraryApplication.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 class CustomerControllerTest {
 
